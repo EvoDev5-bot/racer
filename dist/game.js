@@ -18,7 +18,7 @@ export class Game {
         loadAllAssets(this.ctx).then((images) => {
             this.images = images;
             this.car1 = new Car(300, this.finishLine.y, this.images[1].image, this, 1);
-            this.car2 = new Car(400, this.finishLine.y, this.images[0].image, this, 2);
+            this.car2 = new Car(300, this.finishLine.y, this.images[0].image, this, 2);
         });
         this.update = this.update.bind(this);
     }

@@ -53,15 +53,30 @@ export class Car {
 
     if (checkCollision(this.hitbox, this.game.obstacle.hitbox)) {
       this.x -=
-        this.speed * deltatime * 0.1 * Math.cos(this.angle) * 3 * this.speed;
+        this.speed *
+        deltatime *
+        0.1 *
+        Math.cos(this.angle) *
+        3 *
+        (this.speed + 0.001);
       this.y -=
-        this.speed * deltatime * 0.1 * Math.sin(this.angle) * 3 * this.speed;
+        this.speed *
+        deltatime *
+        0.1 *
+        Math.sin(this.angle) *
+        3 *
+        (this.speed + 0.001);
       this.speed = 0;
     }
 
+    if (this.speed > 0) this.speed -= 0.0001 * deltatime;
+    else if (this.speed < 0) this.speed += 0.0001 * deltatime;
+
     if (this.playerNo == 1) {
-      if (input.indexOf("ArrowRight") != -1) this.angle += 0.0008 * deltatime;
-      if (input.indexOf("ArrowLeft") != -1) this.angle -= 0.0008 * deltatime;
+      if (input.indexOf("ArrowRight") != -1)
+        this.angle += 0.0008 * this.speed * 0.5 * deltatime;
+      if (input.indexOf("ArrowLeft") != -1)
+        this.angle -= 0.0008 * this.speed * 0.5 * deltatime;
       if (input.indexOf("ArrowUp") != -1) this.speed += 0.001 * deltatime;
       if (input.indexOf("ArrowDown") != -1 && this.speed != 0)
         this.speed -= 0.001 * deltatime;

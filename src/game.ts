@@ -30,7 +30,7 @@ export class Game {
         1
       );
       this.car2 = new Car(
-        400,
+        300,
         this.finishLine.y,
         this.images[0].image,
         this,
